@@ -15,41 +15,33 @@ const questions = [
     {name: "email", message: "Email Address: "}
 ];
 
-const readme = "# ${0}\n"
-    + "${1}\n"
-    + "## Installation Instructions\n"
-    + "${2}\n"
-    + "## Usage Information\n";
-    + "${3}\n"
-    + "## Contribution Guidelines\n"
-    + "${4}\n"
-    + "## License\n"
-    + "${5}\n"
-    + "## Github Profile\n"
-    + "${6}\n"
-    + "## Email Address\n"
-    + "${7}\n"
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    console.log("asdf");
-    fs.writeFile(filename, data, (err) => {
-        if (err) throw err;
-    });
-}
-
-
 
 // Function call to initialize app
 inquirer
     .prompt(questions)
     .then((answers) => {
-        const formatted = readme.format(answers["projectTitle"], answers["desc"], answers["install"], answers["usage"], answers["contrib"], answers["license"], answers["github"], answers["email"]);
-        console.log(formatted);
-        fs.writeFile(filename, data, (err) => {
-            if (err) throw err;
-        });
+        const readme = `# ${answers["projectTitle"]}\n
+${answers["desc"]}\n
+## Installation Instructions\n
+${answers["install"]}\n
+## Usage Information\n
+${answers["usage"]}\n
+## Contribution Guidelines\n
+${answers["contrib"]}\n
+## License\n
+${answers["license"]}\n
+## Github Profile\n
+${answers["github"]}\n
+## Email Address\n
+${answers["email"]}\n`;
+
+        console.log("about to write");
+        try {
+            fs.writeFileSync("readme.md", readme);
+        } catch (err) {
+            console.log(err);
+        }
+        console.log("done writing");
     })
     .catch((error) => {
         if (error.isTtyError) {
