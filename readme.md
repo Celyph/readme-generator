@@ -12,8 +12,7 @@
 
 ## Usage
 
-![Screenshot 1](./assets/screenshot1.png)
-![Screenshot 1](./assets/screenshot2.png)
+https://github.com/Celyph/readme-generator/assets/122329678/cc449d43-eb51-4ff2-b87f-6f94336566da
 
 
 ## Credits
